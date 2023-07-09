@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: CI
@@ -79,7 +82,7 @@ jobs:
 
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
+        run: echo "::set-output name=date::$(date +'%Y_%m_%d_%H_%M_%S')"
 
       - name: Create release
         env:
