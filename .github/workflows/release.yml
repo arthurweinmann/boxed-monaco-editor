@@ -71,7 +71,7 @@ jobs:
 
       - name: Build Boxed Monaco
         working-directory: ./boxed
-        run: npm i && npm build && ls -alhR dist && mv -f dist/boxedmonaco.js ../out/
+        run: npm i && npm run build && ls -alhR dist && mv -f dist/boxedmonaco.js ../out/
 
       # - name: Install website node modules
       #   working-directory: website
