@@ -23,5 +23,5 @@
 	"overrides": {
 		"@electron/get": "2.0.0"
 	},
-	"sideEffects": ["./index.js"]
+	"sideEffects": true
 }
