@@ -8,6 +8,8 @@ function getMonacoEditor() {
 	return monaco.editor;
 }
 
+window.boxedMonaco = monaco.editor;
+
 monaco.editor.create(document.getElementById('container'), {
 	value: 'console.log("Hello, world")',
 	language: 'javascript'
