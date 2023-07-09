@@ -68,17 +68,25 @@ jobs:
       - name: Run smoke test
         run: npm run smoketest
 
-      - name: Install website node modules
-        working-directory: website
-        run: yarn install --frozen-lockfile
+      - name: Build Boxed Monaco
+        working-directory: ./boxed
+        run: npm i && npm build && ls -alhR dist && mv -f dist/boxedmonaco.js ../out/
 
-      - name: Build website
-        working-directory: website
-        run: yarn run build
+      # - name: Install website node modules
+      #   working-directory: website
+      #   run: yarn install --frozen-lockfile
 
-      - name: Test website
-        working-directory: website
-        run: yarn test
+      # - name: Build website
+      #   working-directory: website
+      #   run: yarn run build
+
+      # - name: Test website
+      #   working-directory: website
+      #   run: yarn test
+
+      - name: Tar out folder
+        working-directory: ./out
+        run: tar -czvf boxedmonaco.tar.gz ./*
 
       - name: Get current date
         id: date
@@ -89,7 +97,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{  github.ref_name }}-${{ steps.date.outputs.date }}
         run: |
-          gh release create "$tag" out/* \
+          gh release create "$tag" out/boxedmonaco.tar.gz \
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
               --generate-notes
