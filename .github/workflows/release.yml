@@ -96,9 +96,9 @@ jobs:
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{  github.ref_name }}-${{ steps.date.outputs.date }}
+          tag: ${{  github.ref_name }}
         run: |
-          gh release create "$tag" out/boxedmonaco.tar.gz \
+          gitsha=$(git rev-parse --short "$GITHUB_SHA"); gh release create "$tag_$gitsha" out/boxedmonaco.js out/boxedmonaco.tar.gz \
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
-              --generate-notes
+              --notes "Generated on ${{ steps.date.outputs.date }}"
