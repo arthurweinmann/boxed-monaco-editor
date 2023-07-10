@@ -7,10 +7,22 @@ targetTag=$2
 tempbranch=$srcTag
 tempbranch+="_branch"
 
+git checkout main
+
 git checkout -b $tempbranch tags/$srcTag
-git push origin $tempbranch
+
+mv .github .github_original
+git checkout main -- .github
+git checkout main -- boxed
+git add .
+git commit -m "integrate fork changes"
+
+git push -u origin $tempbranch
+
 git tag $targetTag
 git push origin --tags
+
 git checkout main
+
 git branch -d $tempbranch
-git origin --delete $tempbranch
+git push origin -d $tempbranch
