@@ -9,6 +9,8 @@ tempbranch+="_branch"
 
 git checkout main
 
+git branch -d $tempbranch
+git push origin -d $tempbranch
 git push --delete origin $targetTag
 git tag --delete $targetTag
 
