@@ -22,5 +22,7 @@ module.exports = {
 	optimization: {
 		minimize: false
 	},
-	plugins: [new MonacoWebpackPlugin()]
+	plugins: [new MonacoWebpackPlugin({
+		languages: ['typescript', 'javascript', 'css', 'go']
+	})]
 };
