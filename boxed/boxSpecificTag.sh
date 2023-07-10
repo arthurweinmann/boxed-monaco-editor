@@ -9,6 +9,9 @@ tempbranch+="_branch"
 
 git checkout main
 
+git push --delete origin $targetTag
+git tag --delete $targetTag
+
 git checkout -b $tempbranch tags/$srcTag
 
 mv .github .github_original
