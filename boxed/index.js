@@ -10,7 +10,7 @@ import * as monaco from 'monaco-editor';
 
 window.boxedMonaco = monaco.editor;
 
-monaco.editor.create(document.getElementById('livecode'), {
+monaco.editor.create(document.querySelector('.livecode'), {
 	value: 'console.log("Hello, world")',
 	language: 'javascript'
 });
