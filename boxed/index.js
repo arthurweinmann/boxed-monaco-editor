@@ -2,6 +2,8 @@ import * as monaco from 'monaco-editor';
 // or import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 // if shipping only a subset of the features & languages is desired
 
+// use: ['file-loader'],
+
 self.MonacoEnvironment = {
 	getWorkerUrl: function (moduleId, label) {
 		let script = document.getElementById("boxedMonacoScript");
