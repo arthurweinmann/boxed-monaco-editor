@@ -1,7 +1,8 @@
 const path = require('path');
 
 module.exports = {
-	mode: 'development',
+	mode: 'production',
+  	devtool: 'source-map',
 	entry: {
 		app: './index.js',
 		'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
