@@ -2,15 +2,22 @@ import * as monaco from 'monaco-editor';
 // or import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 // if shipping only a subset of the features & languages is desired
 
-// Webpack tree shaking side effect unused variable thingy removes this or a variable declaration not used
-// TODO: figure it out
-// function getMonacoEditor() {
-// 	return monaco.editor;
-// }
+self.MonacoEnvironment = {
+	getWorkerUrl: function (moduleId, label) {
+		if (label === 'json') {
+			return './json.worker.bundle.js';
+		}
+		if (label === 'css' || label === 'scss' || label === 'less') {
+			return './css.worker.bundle.js';
+		}
+		if (label === 'html' || label === 'handlebars' || label === 'razor') {
+			return './html.worker.bundle.js';
+		}
+		if (label === 'typescript' || label === 'javascript') {
+			return './ts.worker.bundle.js';
+		}
+		return './editor.worker.bundle.js';
+	}
+};
 
-window.boxedMonaco = monaco.editor;
-
-monaco.editor.create(document.querySelector('.livecode'), {
-	value: 'console.log("Hello, world")',
-	language: 'javascript'
-});
+window.boxedMonaco = monaco;

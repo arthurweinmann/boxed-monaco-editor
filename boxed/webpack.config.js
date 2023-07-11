@@ -1,11 +1,19 @@
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-	entry: './index.js',
+	mode: 'development',
+	entry: {
+		app: './index.js',
+		'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
+		'json.worker': 'monaco-editor/esm/vs/language/json/json.worker',
+		'css.worker': 'monaco-editor/esm/vs/language/css/css.worker',
+		'html.worker': 'monaco-editor/esm/vs/language/html/html.worker',
+		'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker'
+	},
 	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'boxedmonaco.js'
+		globalObject: 'self',
+		filename: 'boxedmonaco.js',
+		path: path.resolve(__dirname, 'dist')
 	},
 	module: {
 		rules: [
@@ -15,12 +23,8 @@ module.exports = {
 			},
 			{
 				test: /\.ttf$/,
-				type: 'asset/resource'
+				use: ['file-loader']
 			}
 		]
-	},
-	optimization: {
-		minimize: false
-	},
-	plugins: [new MonacoWebpackPlugin()]
+	}
 };
