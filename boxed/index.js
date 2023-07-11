@@ -8,7 +8,7 @@ self.MonacoEnvironment = {
 		if (script !== undefined) {
 			let src = script.getAttribute('src');
 			let spl = src.split("/");
-			spl = spl.pop;
+			spl.pop();
 			if (spl !== undefined) {
 				src = spl.join("/");
 
