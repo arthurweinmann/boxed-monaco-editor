@@ -20,7 +20,7 @@ mv .github .github_original
 git checkout main -- .github
 git checkout main -- boxed
 git add .
-git commit -m "integrate fork changes"
+git commit -m "integrate main branch changes"
 
 git push -u origin $tempbranch
 
