@@ -3,65 +3,21 @@ import * as monaco from 'monaco-editor';
 // if shipping only a subset of the features & languages is desired
 
 self.MonacoEnvironment = {
-	getWorker: function (moduleId, label) {
+	getWorkerUrl: function (moduleId, label) {
 		if (label === 'json') {
-			return new Worker(
-				new URL('../out/monaco-editor/esm/vs/language/json/json.worker.js', import.meta.url),
-				{ type: 'module' }
-			);
+			return './json.worker.boxedmonaco.js';
 		}
 		if (label === 'css' || label === 'scss' || label === 'less') {
-			return new Worker(
-				new URL('../out/monaco-editor/esm/vs/language/css/css.worker.js', import.meta.url),
-				{ type: 'module' }
-			);
+			return './css.worker.boxedmonaco.js';
 		}
 		if (label === 'html' || label === 'handlebars' || label === 'razor') {
-			return new Worker(
-				new URL('../out/monaco-editor/esm/vs/language/html/html.worker.js', import.meta.url),
-				{ type: 'module' }
-			);
+			return './html.worker.boxedmonaco.js';
 		}
 		if (label === 'typescript' || label === 'javascript') {
-			return new Worker(
-				new URL(
-					'../out/monaco-editor/esm/vs/language/typescript/ts.worker.js',
-					import.meta.url
-				),
-				{ type: 'module' }
-			);
+			return './ts.worker.boxedmonaco.js';
 		}
-		return new Worker(
-			new URL('../out/monaco-editor/esm/vs/editor/editor.worker.js', import.meta.url),
-			{
-				type: 'module'
-			}
-		);
+		return './editor.worker.boxedmonaco.js';
 	}
-	// getWorkerUrl: function (moduleId, label) {
-	// 	if (label === 'json') {
-	// 		return './json.worker.bundle.js';
-	// 	}
-	// 	if (label === 'css' || label === 'scss' || label === 'less') {
-	// 		return './css.worker.bundle.js';
-	// 	}
-	// 	if (label === 'html' || label === 'handlebars' || label === 'razor') {
-	// 		return './html.worker.bundle.js';
-	// 	}
-	// 	if (label === 'typescript' || label === 'javascript') {
-	// 		return './ts.worker.bundle.js';
-	// 	}
-	// 	return './editor.worker.bundle.js';
-	// }
 };
 
 window.boxedMonaco = monaco;
-
-/*
-,
-		'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
-		'json.worker': 'monaco-editor/esm/vs/language/json/json.worker',
-		'css.worker': 'monaco-editor/esm/vs/language/css/css.worker',
-		'html.worker': 'monaco-editor/esm/vs/language/html/html.worker',
-		'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker'
-*/
