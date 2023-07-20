@@ -22,7 +22,7 @@ Finally, insert this script into your webpage (either in the head or at the end 
 <script id="boxedMonacoScript" src="/js/lib/app.boxedmonaco.js"></script>
 ```
 
-The script id `boxedMonacoScript` must remain the same as it used to determine the path to your folder containing the other files the editor will need to download asynchronously. The entry script app.boxedmonaco.js from the example must also remain the same.
+The script id `boxedMonacoScript` must remain the same as it is used to determine the path to your folder containing the other files the editor will need to download asynchronously. The entry script app.boxedmonaco.js from the example must also remain the same.
 
 ## Manual compilation
 
