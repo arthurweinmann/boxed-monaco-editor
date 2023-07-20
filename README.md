@@ -16,7 +16,7 @@ First, download and untar the compiled code at [https://github.com/arthurweinman
 
 Then you may copy and paste all the files from the release into a directory served on your website, for example in `https://mywebsite.com/js/lib/`.
 
-Finally, insert this script into your webpage (either in the <head> or at the end of the <body>):
+Finally, insert this script into your webpage (either in the head or at the end of the body):
 
 ```html
 <script id="boxedMonacoScript" src="/js/lib/app.boxedmonaco.js"></script>
