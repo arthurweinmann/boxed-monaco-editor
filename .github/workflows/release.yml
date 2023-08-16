@@ -73,17 +73,20 @@ jobs:
         working-directory: ./boxed
         run: npm i && npm run build && ls -alhR dist
 
-      # - name: Install website node modules
-      #   working-directory: website
-      #   run: yarn install --frozen-lockfile
+      - name: Install website node modules
+        working-directory: website
+        run: yarn install --frozen-lockfile
 
-      # - name: Build website
-      #   working-directory: website
-      #   run: yarn run build
+      - name: Build website
+        working-directory: website
+        run: yarn run build
 
-      # - name: Test website
-      #   working-directory: website
-      #   run: yarn test
+      - name: Test website
+        working-directory: website
+        run: yarn test
+
+      - name: count dependencies
+        run: npm ls --all | wc -l
 
       - name: Tar out folder
         working-directory: ./boxed/dist
